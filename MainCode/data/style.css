@@ -1,0 +1,257 @@
+body {
+  background-color: #b80000;
+  margin: 0;
+}
+
+body.ws-connected {
+  background-color: #00a63a;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 300px;
+}
+
+#controls button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 20px;
+  font:
+    24px Arial,
+    sans-serif;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#controls button:hover {
+  background-color: #e0e0e0;
+}
+
+#controls button.active,
+#thirdMotor button.active {
+  background-color: #ff6868;
+  border: 1px solid #c75252;
+}
+
+#turning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.turning-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.turning-control p,
+.turning-control span {
+  font:
+    16px Arial,
+    sans-serif;
+  color: #fff;
+}
+
+.turning-control button {
+  font:
+    20px Arial,
+    sans-serif;
+  width: 30px;
+  height: 30px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.turning-control button:hover {
+  background-color: #e0e0e0;
+}
+
+#displayModalBtn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: #008000;
+  font:
+    20px Arial,
+    sans-serif;
+}
+
+#displayModalBtn:hover {
+  background-color: #005f00;
+}
+
+.modal-hidden {
+  display: none;
+}
+
+.modal-visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modalContent {
+  background-color: #fff;
+  width: 340px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+
+#closeModal {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: Arial, sans-serif;
+  border: none;
+  float: right;
+  background-color: transparent;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#modalContent h2 {
+  width: fit-content;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+#modalContent p {
+  text-align: center;
+}
+
+#lights,
+#thirdMotor {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+#lights button,
+#thirdMotor button {
+  font:
+    20px Arial,
+    sans-serif;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+#lights button:hover {
+  background-color: #e0e0e0;
+}
+
+#servoControl {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.servoControlBtn {
+  font:
+    20px Arial,
+    sans-serif;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.servoControlBtn:hover,
+#servoSubmit:hover {
+  background-color: #e0e0e0;
+}
+
+#servoControl {
+  font:
+    16px Arial,
+    sans-serif;
+  color: white;
+  flex-direction: column;
+}
+
+#servo {
+  padding: 10px;
+  font:
+    16px Arial,
+    sans-serif;
+  width: 45px;
+  border-radius: 5px;
+  border: none;
+}
+
+#servoSubmit {
+  font:
+    16px Arial,
+    sans-serif;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

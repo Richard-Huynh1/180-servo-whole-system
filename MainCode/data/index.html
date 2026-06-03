@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controls</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Controls</h1>
+    <div id="modal" class="modal-hidden">
+      <div id="modalContent">
+        <h2>Controls:</h2>
+        <span
+          tabIndex="0"
+          onkeydown="handleEnter(event)"
+          onclick="closeModal()"
+          id="closeModal"
+          >&times;</span
+        >
+        <ul>
+          <li>W = Forward</li>
+          <li>A = Left</li>
+          <li>S = Backward</li>
+          <li>D = Right</li>
+          <br />
+          <li>Increase left turn reverse percent = 1</li>
+          <li>Decrease left turn reverse percent = 2</li>
+          <li>Increase right turn reverse percent = 3</li>
+          <li>Decrease right turn reverse percent = 4</li>
+          <br />
+          <li>E = Toggle Headlights</li>
+          <li>Q = Toggle Rear Lights</li>
+          <br />
+          <li>Shift = Spin Motor Direction 1</li>
+          <li>Space = Spin Motor Direction 2</li>
+          <br />
+          <li>R = Increase servo rotation (30)</li>
+          <li>F = Decrease servo rotation (-30)</li>
+        </ul>
+      </div>
+    </div>
+    <div id="main">
+      <div id="controls">
+        <button id="forwardLeft">⇖</button>
+        <button id="forward">↑</button>
+        <button id="forwardRight">⇗</button>
+        <button id="left">←</button>
+        <span></span>
+        <button id="right">→</button>
+        <button id="backwardLeft">⇙</button>
+        <button id="backward">↓</button>
+        <button id="backwardRight">⇘</button>
+      </div>
+      <div id="turning">
+        <span class="turning-control">
+          <p>Left turn reverse percent</p>
+          <button id="leftReverseIncrease">+</button>
+          <span id="leftReverse">Loading...</span>
+          <button id="leftReverseDecrease">-</button>
+        </span>
+        <span class="turning-control">
+          <p>Right turn reverse percent</p>
+          <button id="rightReverseIncrease">+</button>
+          <span id="rightReverse">Loading...</span>
+          <button id="rightReverseDecrease">-</button>
+        </span>
+      </div>
+      <div id="lights">
+        <button onclick="toggleHeadlights()">Toggle Headlights</button>
+        <button onclick="toggleRearLights()">Toggle Rear Lights</button>
+      </div>
+      <div id="thirdMotor">
+        <button id="directionOne">Spin Motor Direction 1</button>
+        <button id="directionTwo">Spin Motor Direction 2</button>
+      </div>
+      <div id="servoControl">
+        <span>
+          <label for="servo">Enter a number to rotate the servo (0-180):</label>
+          <input id="servo" type="number" max="180" min="0" value="0" />
+          <button id="servoSubmit" onClick="rotateServo()">Submit value</button>
+        </span>
+        <span>
+          <button class="servoControlBtn" onClick="changeServoRotation(30)">
+            Increase Servo Rotation (30)
+          </button>
+          <button class="servoControlBtn" onClick="changeServoRotation(-30)">
+            Decrease Servo Rotation (-30)
+          </button>
+        </span>
+      </div>
+    </div>
+    <button onclick="displayModal()" id="displayModalBtn">?</button>
+    <script src="script.js"></script>
+  </body>
+</html>
