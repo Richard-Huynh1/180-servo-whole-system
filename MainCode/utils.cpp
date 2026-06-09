@@ -5,16 +5,16 @@ void toggleHeadlights(bool isOn) {
   digitalWrite(HEADLIGHTS_PIN, isOn ? HIGH : LOW);
 }
 
-void toggleRearlights(bool isOn) {
-  digitalWrite(REARLIGHTS_PIN, isOn ? HIGH : LOW);
+void toggleRearLights(bool isOn) {
+  digitalWrite(REAR_LIGHTS_PIN, isOn ? HIGH : LOW);
 }
 
 void setupLights() {
   pinMode(HEADLIGHTS_PIN, OUTPUT);
-  pinMode(REARLIGHTS_PIN, OUTPUT);
+  pinMode(REAR_LIGHTS_PIN, OUTPUT);
 
   toggleHeadlights(false);
-  toggleRearlights(false);
+  toggleRearLights(false);
 }
 
 void setMotorPwm(int pin1, int pin2, int pwm) {
@@ -41,12 +41,12 @@ void setupMotors() {
   ledcAttach(RIGHT_MOTOR_PIN_1, PWM_FREQ, PWM_RES);
   ledcAttach(RIGHT_MOTOR_PIN_2, PWM_FREQ, PWM_RES);
 
-  ledcAttach(THIRD_MOTOR_PIN_1, PWM_FREQ, PWM_RES);
-  ledcAttach(THIRD_MOTOR_PIN_2, PWM_FREQ, PWM_RES);
+  pinMode(THIRD_MOTOR_PIN_1, OUTPUT);
+  pinMode(THIRD_MOTOR_PIN_2, OUTPUT);
 
   setMotorPwm(LEFT_MOTOR_PIN_1, LEFT_MOTOR_PIN_2, 0);
   setMotorPwm(RIGHT_MOTOR_PIN_1, RIGHT_MOTOR_PIN_2, 0);
-  setMotorPwm(THIRD_MOTOR_PIN_1, THIRD_MOTOR_PIN_2, 0);
+  stopThirdMotor();
 }
 
 void moveForward(int speed) {
@@ -91,12 +91,17 @@ void diagonalBackwardRight(int speed) {
   diagonalForwardRight(-speed);
 }
 
-void thirdMotorDirection1(int speed) {
-  speed = constrain(speed, -255, 255);
-  setMotorPwm(THIRD_MOTOR_PIN_1, THIRD_MOTOR_PIN_2, speed);
+void thirdMotorDirection1() {
+  digitalWrite(THIRD_MOTOR_PIN_1, HIGH);
+  digitalWrite(THIRD_MOTOR_PIN_2, LOW);
 }
 
-void thirdMotorDirection2(int speed) {
-  speed = constrain(speed, -255, 255);
-  setMotorPwm(THIRD_MOTOR_PIN_1, THIRD_MOTOR_PIN_2, -speed);
+void thirdMotorDirection2() {
+  digitalWrite(THIRD_MOTOR_PIN_1, LOW);
+  digitalWrite(THIRD_MOTOR_PIN_2, HIGH);
+}
+
+void stopThirdMotor() {
+  digitalWrite(THIRD_MOTOR_PIN_1, LOW);
+  digitalWrite(THIRD_MOTOR_PIN_2, LOW);
 }

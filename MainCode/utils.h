@@ -11,13 +11,13 @@
 #define THIRD_MOTOR_PIN_2 19
 
 #define HEADLIGHTS_PIN 7
-#define REARLIGHTS_PIN 0
+#define REAR_LIGHTS_PIN 0
 
 #define PWM_FREQ 1000      // 1 kHz PWM
 #define PWM_RES 8          // 8-bit resolution/motor speed range (0-255)
 
 void toggleHeadlights(bool isOn);
-void toggleRearlights(bool isOn);
+void toggleRearLights(bool isOn);
 
 void setupLights();
 
@@ -37,7 +37,8 @@ void diagonalForwardRight(int speed);
 void diagonalBackwardLeft(int speed);
 void diagonalBackwardRight(int speed);
 
-void thirdMotorDirection1(int speed);
-void thirdMotorDirection2(int speed);
+void thirdMotorDirection1();
+void thirdMotorDirection2();
+void stopThirdMotor();
 
 #endif // UTILS_H

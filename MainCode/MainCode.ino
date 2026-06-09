@@ -56,12 +56,14 @@ void dealWithMessage(String msg) {
     headlightsIsOn = !headlightsIsOn;
     toggleHeadlights(headlightsIsOn);
   } else if (msg == "rearLights") {
-    rearlightsIsOn = !rearlightsIsOn;
-    toggleRearlights(rearLightsIsOn);
+    rearLightsIsOn = !rearLightsIsOn;
+    toggleRearLights(rearLightsIsOn);
   } else if (msg == "direction1") {
-    thirdMotorDirection1(speed);
+    thirdMotorDirection1();
   } else if (msg == "direction2") {
-    thirdMotorDirection2(speed);
+    thirdMotorDirection2();
+  } else if (msg == "stopThirdMotor") {
+    stopThirdMotor();
   } else {
     Serial.println("Message is not recognized: " + msg);
   }
@@ -89,9 +91,10 @@ void setup() {
   Serial.begin(115200);
   delay(2000);
 
-  servo.attach(SERVO_PIN);
+  servo.attach(SERVO_PIN, 500, 2500);
 
   setupMotors();
+  setupLights();
   servo.write(0);
 
   // Mounting File System
