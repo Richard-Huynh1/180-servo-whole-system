@@ -326,8 +326,9 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && modal.classList.contains('modal-visible')) {
     closeModal();
     return;
-  } else if (servoKeys.has(event.key)) {
+  } else if (servoKeys.has(event.key) && is180Servo) {
     changeServoRotation((event.key === 'r') ? 30 : -30);
+    return;
   }
 
 
@@ -512,6 +513,83 @@ function changeServoRotation(val) {
 
   inputElement.value = numberVal;
   websocketSend(`S${numberVal}`);
+}
+
+let is180Servo = true;
+
+function switchServo() {
+  const servoControlDiv = document.getElementById('servoControl');
+  servoControlDiv.replaceChildren();
+  const servoSwitchBtn = document.getElementById('switchServo');
+  const servoDescriptionOne = document.getElementById('servoDescriptionOne');
+  const servoDescriptionTwo = document.getElementById('servoDescriptionTwo');
+
+  is180Servo = !is180Servo;
+
+  if (is180Servo) {
+    servoSwitchBtn.textContent = 'Switch to 360 Servo';
+    servoControlDiv.style.flexDirection = 'column';
+    servoDescriptionOne.textContent = 'R = Increase servo rotation (30)';
+    servoDescriptionTwo.textContent = 'F = Decrease servo rotation (-30)';
+
+    const inputSpan = document.createElement('span');
+
+    const inputLabel = document.createElement('label');
+    inputLabel.htmlFor = 'servo';
+    inputLabel.textContent = 'Enter a number to rotate the servo (0-180):';
+
+    const degreeInput = document.createElement('input');
+    degreeInput.id = 'servo';
+    degreeInput.type = 'number';
+    degreeInput.max = '180';
+    degreeInput.min = '0';
+    degreeInput.value = '0';
+
+    const submitDegreeBtn = document.createElement('button');
+    submitDegreeBtn.id = 'servoSubmit';
+    submitDegreeBtn.onclick = rotateServo;
+    submitDegreeBtn.textContent = 'Submit value';
+
+    inputSpan.append(inputLabel);
+    inputSpan.append(degreeInput);
+    inputSpan.append(submitDegreeBtn);
+
+    const controlBtnSpan = document.createElement('span');
+
+    const increaseBtn = document.createElement('button');
+    increaseBtn.className = 'servoControlBtn';
+    increaseBtn.onclick = () => changeServoRotation(30);
+    increaseBtn.textContent = 'Increase Servo Rotation (30)';
+
+    const decreaseBtn = document.createElement('button');
+    decreaseBtn.className = 'servoControlBtn';
+    decreaseBtn.onclick = () => changeServoRotation(-30);
+    decreaseBtn.textContent = 'Decrease Servo Rotation (-30)';
+
+    controlBtnSpan.append(increaseBtn);
+    controlBtnSpan.append(decreaseBtn);
+
+    const servoDiv = document.getElementById('servoControl');
+
+    servoDiv.append(inputSpan);
+    servoDiv.append(controlBtnSpan);
+  } else {
+    servoSwitchBtn.textContent = 'Switch to 180 Servo';
+    servoControlDiv.style.flexDirection = 'row';
+    servoDescriptionOne.textContent = 'R = Servo Direction 1';
+    servoDescriptionTwo.textContent = 'F = Servo Direction 2';
+
+    const directionOneBtn = document.createElement('button');
+    directionOneBtn.textContent = 'Spin Servo Direction 1';
+    directionOneBtn.id = 'directionOne';
+
+    const directionTwoBtn = document.createElement('button');
+    directionTwoBtn.textContent = 'Spin Servo Direction 2';
+    directionTwoBtn.id = 'directionTwo';
+
+    servoControlDiv.append(directionOneBtn);
+    servoControlDiv.append(directionTwoBtn);
+  }
 }
 
 const maxRetries = 5;

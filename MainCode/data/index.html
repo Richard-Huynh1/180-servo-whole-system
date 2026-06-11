@@ -35,8 +35,8 @@
           <li>Shift = Spin Motor Direction 1</li>
           <li>Space = Spin Motor Direction 2</li>
           <br />
-          <li>R = Increase servo rotation (30)</li>
-          <li>F = Decrease servo rotation (-30)</li>
+          <li id="servoDescriptionOne">R = Increase servo rotation (30)</li>
+          <li id="servoDescriptionTwo">F = Decrease servo rotation (-30)</li>
         </ul>
       </div>
     </div>
@@ -78,18 +78,19 @@
         <span>
           <label for="servo">Enter a number to rotate the servo (0-180):</label>
           <input id="servo" type="number" max="180" min="0" value="0" />
-          <button id="servoSubmit" onClick="rotateServo()">Submit value</button>
+          <button id="servoSubmit" onclick="rotateServo()">Submit value</button>
         </span>
         <span>
-          <button class="servoControlBtn" onClick="changeServoRotation(30)">
+          <button class="servoControlBtn" onclick="changeServoRotation(30)">
             Increase Servo Rotation (30)
           </button>
-          <button class="servoControlBtn" onClick="changeServoRotation(-30)">
+          <button class="servoControlBtn" onclick="changeServoRotation(-30)">
             Decrease Servo Rotation (-30)
           </button>
         </span>
       </div>
     </div>
+    <button id="switchServo" onclick="switchServo()">Switch to 360 Servo</button>
     <button onclick="displayModal()" id="displayModalBtn">?</button>
     <script src="script.js"></script>
   </body>

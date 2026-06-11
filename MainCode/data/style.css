@@ -93,7 +93,7 @@ h1 {
   cursor: pointer;
 }
 
-.turning-control button:hover {
+.turning-control button:hover, #directionOne:hover, #directionTwo:hover {
   background-color: #e0e0e0;
 }
 
@@ -206,6 +206,18 @@ h1 {
   gap: 10px;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+#servoControl span {
+  font:
+    16px Arial,
+    sans-serif;
+  color: white;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .servoControlBtn {
@@ -228,14 +240,6 @@ h1 {
   background-color: #e0e0e0;
 }
 
-#servoControl {
-  font:
-    16px Arial,
-    sans-serif;
-  color: white;
-  flex-direction: column;
-}
-
 #servo {
   padding: 10px;
   font:
@@ -254,4 +258,33 @@ h1 {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+#switchServo {
+   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+  font:
+    16px Arial,
+    sans-serif;
+}
+
+#directionOne, #directionTwo {
+  font:
+    20px Arial,
+    sans-serif;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
